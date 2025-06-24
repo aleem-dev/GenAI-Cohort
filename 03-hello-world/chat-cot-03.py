@@ -19,7 +19,7 @@ SYSTEM_PROMPT = """
     Rules:
     1. Follow the strict JSON output as per schema.
     2. Always perform one step at the time and wait for th enext input.
-    3. Carefully analyse the user quesry.
+    3. Carefully analyse the user query.
 
     Output Format:
     {{"step":"string", "content":"string"}}
