@@ -52,6 +52,7 @@ SYSTEM_PROMPT = """
 # )
 # print("\n:)",response.choices[0].message.content, "\n") 
 
+#auto apend the output to the input
 messages = [
     {"role":"system", "content":SYSTEM_PROMPT}
 ]
@@ -59,6 +60,7 @@ messages = [
 query = input("> ") #user console input
 messages.append({"role":"user","content":query})
 
+#running the ai chat bot
 while True:
     #starting the ai chat bot
     response = client.chat.completions.create(
