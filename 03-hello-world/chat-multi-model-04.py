@@ -25,15 +25,20 @@ Input: what is 2 + 2
 → {"step":"result", "content":"The answer is 4, calculated by basic addition."}
 """
 
+#apend output to input
 messages = [
     {"role": "system", "content": SYSTEM_PROMPT}
 ]
 
 query = input("📝 Prompt: ")
-print(f"\n🧾 Question: {query}")
+# print(f"\n🧾 Question: {query}")
 messages.append({"role": "user", "content": query})
+
+#use this variable to select model, emojis, 
+#and ask user if there is any follow up question or information
 current_step = None
 
+#format output for better readability
 emojis = {
     "analyse": "🧠",
     "think": "🧠",
@@ -42,6 +47,7 @@ emojis = {
     "result": "🤖"
 }
 
+#multi-model logic
 while True:
     # Select model based on step
     if current_step == "result":
@@ -61,6 +67,7 @@ while True:
     content = response.choices[0].message.content
     messages.append({"role": "assistant", "content": content})
 
+    #printing the output
     try:
         parsed = json.loads(content)
         current_step = parsed.get("step")
