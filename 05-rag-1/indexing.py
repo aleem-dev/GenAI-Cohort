@@ -1,9 +1,9 @@
-from langchain_community.document_loaders import PyPDFLoader #loading
 from pathlib import Path  
+from langchain_community.document_loaders import PyPDFLoader #loading
 from langchain_text_splitters import RecursiveCharacterTextSplitter #Chunking
 from langchain_openai import OpenAIEmbeddings   #Vector Embedding
 from dotenv import load_dotenv
-from langchain_qdrant import QdrantVectorStore
+from langchain_qdrant import QdrantVectorStore #Store
 
 load_dotenv()
 
@@ -26,6 +26,7 @@ all_splits = text_splitter.split_documents(docs)
 #Vector embedings
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
+# Store
 # Using [embedding_model] create embeddings of [split_docs] and store in DB
 vector_store = QdrantVectorStore.from_documents(
     documents=all_splits,
